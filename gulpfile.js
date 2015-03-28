@@ -90,6 +90,7 @@ gulp.task('karma', function() {
 	gulp.src([
 			'node_modules/angular/angular.js',
 			'node_modules/angular-mocks/angular-mocks.js',
+			'test/mock/fake.conflicting.lib.js',
 			'node_modules/i18next-client/i18next.min.js',
 			'src/provider.js',
 			'src/{,*/}*.js',

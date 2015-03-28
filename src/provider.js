@@ -14,13 +14,24 @@ angular.module('jm.i18next').provider('$i18next', function () {
 
 	self.options = globalOptions;
 
+	self.getI18next = function () {
+		return window.i18next || window.i18n;
+	};
+
+	self.noConflict = function () {
+		console.log(window.i18n);
+		window.i18n.noConflict();
+	};
+
 	self.$get = ['$rootScope', '$timeout', function ($rootScope, $timeout) {
 
 		function init(options) {
 
-			if (window.i18n) {
+			var i18n = self.getI18next();
 
-				window.i18n.init(options, function (localize) {
+			if (i18n) {
+
+				i18n.init(options, function (localize) {
 
 					translations = {};
 
@@ -30,7 +41,7 @@ angular.module('jm.i18next').provider('$i18next', function () {
 						$rootScope.$digest();
 					}
 
-					$rootScope.$broadcast('i18nextLanguageChange', window.i18n.lng());
+					$rootScope.$broadcast('i18nextLanguageChange', i18n.lng());
 
 				});
 
