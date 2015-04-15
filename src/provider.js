@@ -19,7 +19,6 @@ angular.module('jm.i18next').provider('$i18next', function () {
 	};
 
 	self.noConflict = function () {
-		console.log(window.i18n);
 		window.i18n.noConflict();
 	};
 

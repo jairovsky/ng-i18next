@@ -2,22 +2,8 @@ describe('Unit: jm.i18next - Provider behavior for .noConflict()', function () {
 
 	'use strict';
 
-	var $i18next;
-	/*var i18nextOptions = {
-		lng: 'de-DE',
-		useCookie: false,
-		useLocalStorage: false,
-		fallbackLng: 'dev',
-		resStore: {
-			'de-DE': {
-				translation: {}
-			},
-			'dev': {
-				translation: {}
-			}
-		}
-	};*/
-	var ref = window.i18n;
+	var $i18next,
+		ref = window.i18n;
 
 	beforeEach(function () {
 
@@ -35,6 +21,7 @@ describe('Unit: jm.i18next - Provider behavior for .noConflict()', function () {
 	it('should call i18n.noConflict() internally', function () {
 
 		expect(window.i18next).toBeDefined();
+		expect(window.i18n.isFakeConflictingLib).toBeTruthy();
 	});
 
 	afterEach(function () {
